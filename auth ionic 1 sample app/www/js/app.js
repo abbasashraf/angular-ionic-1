@@ -3,9 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var app = angular.module('app', ['ionic', 'app.controller', 'ngCordova', 'firebase'])
+var app = angular.module('app', ['ionic', 'app.controller', 'ngCordova'])
 
-  .run(function ($ionicPlatform, $rootScope, $firebaseAuth, $firebase, $window, $firebaseArray, $firebaseObject) {
+  .run(function ($ionicPlatform, $rootScope) {
     $ionicPlatform.ready(function () {
       if (window.cordova && window.cordova.plugins.Keyboard) {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -20,16 +20,16 @@ var app = angular.module('app', ['ionic', 'app.controller', 'ngCordova', 'fireba
       if (window.StatusBar) {
         StatusBar.styleDefault();
       }
-      console.log($firebase)
-      var config = {
-        apiKey: "AIzaSyCQPyAijJ8ls0EN-Mi1c4-jPkj863hKvDk",
-        authDomain: "quizapp-5281b.firebaseapp.com",
-        databaseURL: "https://quizapp-5281b.firebaseio.com",
-        projectId: "quizapp-5281b",
-        storageBucket: "quizapp-5281b.appspot.com",
-        messagingSenderId: "144096262049"
-      };
-      firebase.initializeApp(config);
+      // console.log($firebase)
+      // var config = {
+      //   apiKey: "AIzaSyCQPyAijJ8ls0EN-Mi1c4-jPkj863hKvDk",
+      //   authDomain: "quizapp-5281b.firebaseapp.com",
+      //   databaseURL: "https://quizapp-5281b.firebaseio.com",
+      //   projectId: "quizapp-5281b",
+      //   storageBucket: "quizapp-5281b.appspot.com",
+      //   messagingSenderId: "144096262049"
+      // };
+      // firebase.initializeApp(config);
 
     });
 
@@ -53,6 +53,11 @@ app.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'templates/signup.html',
       controller: 'signupCtrl'
     })
+    .state('home', {
+      url: '/home',
+      templateUrl: 'templates/home.html',
+      // controller: 'homeCtrl'
+    })
 
-  $urlRouterProvider.otherwise('/main');
+  $urlRouterProvider.otherwise('main');
 });
